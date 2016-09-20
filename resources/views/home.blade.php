@@ -14,10 +14,16 @@
                 <div class="panel-body">
                 <h3>User has fields:</h3>
                     
-                @foreach ($userFields as $userField)
-                    <p># {{ $userField->name }}</p>
-                @endforeach
-                
+                <ul>
+                    @foreach ($userFields as $userField)
+                        <li>
+                            {{ Form::open() }}
+                                <input type="checkbox" name="field" value="{{ $userField->id }}"/>
+                                <p style="display: inline;">{{ $userField->name }}</p>
+                            {{ Form::close() }}
+                        </li>
+                    @endforeach
+                </ul>
                 </div>
             </div>
         </div>
