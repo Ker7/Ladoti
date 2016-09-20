@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input as Input;
 
 use App\Field as Field;
 use App\User as User;
@@ -48,7 +49,7 @@ class HomeController extends Controller
     
     public function postIndex(){
         
-        $id = Input::get('id');
+        $id = Input::get('field_id');
         echo "postIndex!".$id;
     }
 }

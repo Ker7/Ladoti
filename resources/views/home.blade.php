@@ -18,9 +18,10 @@
                     @foreach ($userFields as $userField)
                         <li style="list-style-type: none;">
                             {{ Form::open() }}
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input
                                     type="checkbox"
-                                    name="field"
+                                    name="field_id"
                                     onClick="this.form.submit()"
                                     value="{{ $userField->id }}"
                                     {{ $userField->clicked?'checked':'' }}
