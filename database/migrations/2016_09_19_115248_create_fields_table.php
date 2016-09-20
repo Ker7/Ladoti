@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateFieldsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        //Schema::drop('fields');
+        
+        Schema::create('fields', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            // Privileeg, ehk kui kõva kasutaja on. 1-tavakasutaja ... 10-admingod
-            $table->integer('privilege');
-            $table->rememberToken();
+            $table->string('color');
+            $table->integer('author_user');
+            $table->boolean('clicked');     //clicked or not? For giggles...
+            $table->boolean('active');
+            $table->boolean('public');
             $table->timestamps();
         });
     }
@@ -31,6 +33,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        //
+        Schema::drop('fields');
     }
 }

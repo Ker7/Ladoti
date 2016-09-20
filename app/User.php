@@ -23,4 +23,29 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+        
+    /**
+     * The table associated with the model. Snake case - plural name for table is assumes.
+     * So in this case it is not important whether we do declare this table or not.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+    
+    /**
+     * Method for calling fields created by self.
+     *
+     */
+    public function getAuthoredFields() {
+        return $this->hasMany('App\Field', 'author_user');
+        //return "yoyo";
+    }
+    
+    /**
+     * Method for calling fields linked to self.
+     *
+     */
+    public function getLinkedFields() {
+        return $this->belongsToMany('App\Field');
+    }
 }
