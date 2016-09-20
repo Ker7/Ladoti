@@ -45,4 +45,10 @@ class HomeController extends Controller
         
         return view('home', $data);
     }
+    
+    public function postIndex(){
+        
+        $id = Input::get('id');
+        echo "postIndex!".$id;
+    }
 }

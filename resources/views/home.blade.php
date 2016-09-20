@@ -16,9 +16,15 @@
                     
                 <ul>
                     @foreach ($userFields as $userField)
-                        <li>
+                        <li style="list-style-type: none;">
                             {{ Form::open() }}
-                                <input type="checkbox" name="field" value="{{ $userField->id }}"/>
+                                <input
+                                    type="checkbox"
+                                    name="field"
+                                    onClick="this.form.submit()"
+                                    value="{{ $userField->id }}"
+                                    {{ $userField->clicked?'checked':'' }}
+                                />
                                 <p style="display: inline;">{{ $userField->name }}</p>
                             {{ Form::close() }}
                         </li>

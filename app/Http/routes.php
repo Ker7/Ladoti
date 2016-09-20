@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+Route::post('/', 'HomeController@postIndex');
 
+Route::auth();
 Route::get('/home', 'HomeController@index');
 
 
 
 // Test calls
-
 Route::get('/user', function() {
     echo "/user call";
 });
