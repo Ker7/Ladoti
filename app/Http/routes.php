@@ -11,12 +11,11 @@
 |
 */
 
-Route::post('/', 'HomeController@postIndex');
-Route::post('/home', 'HomeController@postIndex');
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/home', 'HomeController@postIndex');
 
 Route::auth();
 Route::get('/home', 'HomeController@index');
