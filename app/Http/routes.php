@@ -11,7 +11,7 @@
 |
 */
 
-//Route::post('/', 'HomeController@postIndex');
+Route::post('/', 'HomeController@postIndex');
 Route::post('/home', 'HomeController@postIndex');
 
 Route::get('/', function () {

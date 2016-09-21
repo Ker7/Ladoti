@@ -17,7 +17,7 @@
                 <ul>
                     @foreach ($userFields as $userField)
                         <li style="list-style-type: none;">
-                            {{ Form::open() }}
+                            {{ Form::open(['action' => 'HomeController@postIndex']) }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input
                                     type="checkbox"
