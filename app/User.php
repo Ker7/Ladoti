@@ -40,12 +40,29 @@ class User extends Authenticatable
         return $this->hasMany('App\Field', 'author_user');
         //return "yoyo";
     }
+        
+    /**
+     * Method for calling fields created by self WITH OneToMany!!! for getting info from 
+     *
+     */
+    public function getLinkedUserFields() {
+        return $this->hasMany('App\UserField');
+        //return "yoyo";
+    }
     
     /**
      * Method for calling fields linked to self.
      *
      */
-    public function getLinkedFields() {
-        return $this->belongsToMany('App\Field');
+    //public function getLinkedFields() {
+    //    return $this->belongsToMany('App\Field');
+    //}
+    
+    /* Validation required! @todo
+     *
+     */
+    public function setName(string $newName){
+        $this->name = $newName;
+        $this->save();
     }
 }

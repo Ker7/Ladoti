@@ -13,23 +13,63 @@
                     
                 <div class="panel-body">
                 <h3>User has fields:</h3>
-                    
-                <ul>
-                    @foreach ($userFields as $userField)
-                        <li style="list-style-type: none;">
-                            {{ Form::open() }}
-                            {{ Form::hidden('form_name', 'field_clicked') }}
-                            {{ Form::hidden('field_id', $userField->id) }}
-                                <input
-                                    type="checkbox"
-                                    name="field"
-                                    onClick="this.form.submit()"
-                                    {{ $userField->clicked?'checked':'' }}
-                                />
-                                <p style="display: inline;">{{ $userField->name }}</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Clicked</td>
+                            <td>Active</td>
+                            <td>Last Updated</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($userFields as $userField)
+                            <tr>
+                                <td>{{ $userField->getField->name }}</td>
+                                <td>
+                                    {{ Form::open() }}
+                                    {{ Form::hidden('form_name', 'field_clicked') }}
+                                    {{ Form::hidden('field_id', $userField->id) }}
+                                    {{ method_field('PATCH') }}
+                                        <input
+                                            type="checkbox"
+                                            name="field"
+                                            onClick="this.form.submit()"
+                                            {{ $userField->clicked?'checked':'' }}
+                                        />
+                                    {{ Form::close() }}
+                                </td>
+                                <td>
+                                    {{ Form::open() }}
+                                    {{ Form::hidden('form_name', 'field_active') }}
+                                    {{ Form::hidden('field_id', $userField->id) }}
+                                    {{ method_field('PATCH') }}
+                                        <input
+                                            type="checkbox"
+                                            name="field"
+                                            onClick="this.form.submit()"
+                                            {{ $userField->active?'checked':'' }}
+                                        />
+                                    {{ Form::close() }}</td>
+                                <td>{{ $userField->updated_at }}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+                            {{ Form::Model( App\User::find(2), ['route' => ['profile.update', '234' ]] ) }}
+                            {{ method_field('PUT') }}
+                            {{ Form::text('name') }}
+                            {{ Form::text('email') }}
+                            {{ Form::checkbox('active') }}
+                            {{ Auth::user()->name }}
+                            {{ Form::text('updated_at') }}
+                            {{ Form::submit('Save') }}
                             {{ Form::close() }}
-                        </li>
-                    @endforeach
+                <ul>
+
                 </ul>
                 <div class="doti-main-circle">
                     <canvas id="fieldCircle" width="400" height="400" ></canvas>

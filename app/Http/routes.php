@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/home', 'HomeController@postIndex');
+Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@index'] );
+
+/*  Patch - modify values
+ */
+Route::patch('/home', 'HomeController@postIndex' );
 
 Route::auth();
 Route::get('/home', 'HomeController@index');
+Route::get('/profile', 'ProfileController@index');
 
 
 

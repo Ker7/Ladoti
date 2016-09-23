@@ -1,5 +1,3 @@
-
-
 $( document ).ready(function() {
     console.log( "ready!" );
     
@@ -74,45 +72,6 @@ $( document ).ready(function() {
             }
         }
     });
-    //var data = {
-    //    datasets: [{
-    //        data: [
-    //            11,
-    //            16,
-    //            7,
-    //            3,
-    //            14
-    //        ],
-    //        backgroundColor: [
-    //            "#FF6384",
-    //            "#4BC0C0",
-    //            "#FFCE56",
-    //            "#E7E9ED",
-    //            "#36A2EB"
-    //        ],
-    //        label: 'My dataset' // for legend
-    //    }],
-    //    labels: [
-    //        "Red",
-    //        "Green",
-    //        "Yellow",
-    //        "Grey",
-    //        "Blue"
-    //    ]
-    //};
-    //var options = {
-    //    elements: {
-    //        arc: {
-    //            borderColor: "#000000"
-    //        }
-    //    }
-    //}
-    //new Chart(ctx, {
-    //    data: data,
-    //    type: 'polarArea',
-    //    options: options
-    //});
-
     
     $( "#fieldCircle" ).click(function(evt){
         var activePoints = myChart.getElementAtEvent(evt);           
@@ -121,17 +80,19 @@ $( document ).ready(function() {
         //console.log(activePoints['_index ']);
         var firstPoint = activePoints[0];
         if (firstPoint !== undefined)
-            text1 = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
-            //text2 = myChart.data.label[firstPoint._datasetIndex].data['labels'];
-            text2 = myChart.data.labels[firstPoint._index];
-            t3 = myChart.data.ids[firstPoint._index];
-            //text3 = _index;
-            //text4 = myChart.data.datasets[firstPoint._datasetIndex].names[firstPoint._index];
-            alert(text1+' / '+text2+' /data:'+t3);
-            console.log(myChart.data.datasets[firstPoint._datasetIndex].data['labels'].toSource());
+        
+            t1 = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];   // Field väärtus
+            t2 = myChart.data.labels[firstPoint._index];                                    // Fieldi nimi
+            t3 = myChart.data.ids[firstPoint._index];                                       // Fieldi ID
+            
+alert(t1+' / '+t2+' /data:'+t3);
+
+            //console.log(myChart.data.datasets[firstPoint._datasetIndex].data['labels'].toSource());
             //alert(firstPoint._datasetIndex + "/" + firstPoint._index);
     });
+});
 
-    
+$('#modal-save').on('click', function() {
+   console.log('hit!');
 });
 
