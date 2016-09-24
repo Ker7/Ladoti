@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@index'] );
+Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@updateProfile'] );
 
 /*  Patch - modify values
  */

@@ -58,10 +58,13 @@ class User extends Authenticatable
     //    return $this->belongsToMany('App\Field');
     //}
     
+    public function getUser() {
+        return $this;
+    }
     /* Validation required! @todo
      *
      */
-    public function setName(string $newName){
+    public function setName($newName){
         $this->name = $newName;
         $this->save();
     }

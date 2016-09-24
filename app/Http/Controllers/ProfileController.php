@@ -17,13 +17,23 @@ use Illuminate\Support\Facades\Route as Route;
 class ProfileController extends Controller
 {
     public function index(){
-        //echo "ProfileControlle!";
-        //Auth::user()->name;
-        //$this->displayGet();
-        if (isset(Input::get('form_name'))) {
-            Auth::user()->setName(Input::get('name'));
-        }
         return view('profile');
+    }
+    
+    public function updateProfile(){
+        $this->displayGet();
+        if ( null !== (Input::get('form_name'))) {
+            //Auth::user()->setName(Input::get('name'));
+            $u = User::findOrFail(Auth::user()->id);
+            //print_r($u);
+            $u->setName(Input::get('name'));
+            
+            //return redirect()->action('HomeController@index');
+            return redirect()->action('ProfileController@index');
+        }
+        // ELSE ERROR ERROR
+        echo "Ei saand sittagi tüng!";
+        
     }
     
     // HELPER FUNCTIONS //  

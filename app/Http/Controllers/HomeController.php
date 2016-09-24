@@ -75,19 +75,18 @@ class HomeController extends Controller
         //$arr = array('field_clicked',
         //             'field_active');
         $this->displayGet();
-        
         $this->displayMeth();
         
-        $ufid = Input::get('field_id');
-        $userField = UserField::findOrFail($ufid); 
-        
-        switch(Input::get('form_name')) {
-            case('field_clicked'): return $this->processFormFieldClicked($ufid);
-            case('field_active'): return $this->processFormFieldActive($ufid);
-            default: break;
+        if (null !== Input::get('field_id')) {
+            $ufid = Input::get('field_id');
+            $userField = UserField::findOrFail($ufid); 
+            switch(Input::get('form_name')) {
+                case('field_clicked'): return $this->processFormFieldClicked($ufid);
+                case('field_active'): return $this->processFormFieldActive($ufid);
+                default: break;
+            }
         }
-        
-
+        return $this->index();
 
     }
     
