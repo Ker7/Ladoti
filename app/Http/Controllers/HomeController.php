@@ -37,7 +37,7 @@ class HomeController extends Controller
         //$currentUser = Auth::user();  
         //$userFields = $currentUser->getLinkedFields;
         
-        $this->displayMeth();
+        //$this->displayMeth();
         
         $data = array();
         
@@ -74,8 +74,8 @@ class HomeController extends Controller
         
         //$arr = array('field_clicked',
         //             'field_active');
-        $this->displayGet();
-        $this->displayMeth();
+        //$this->displayGet();
+        //$this->displayMeth();
         
         if (null !== Input::get('field_id')) {
             $ufid = Input::get('field_id');
@@ -104,7 +104,7 @@ class HomeController extends Controller
     }
     public function processFormFieldActive2(){
         
-        $this->displayGet();
+        //$this->displayGet();
         //echo "123122222222222222222222222222222222222222222222222223";
         //$userField = UserField::findOrFail($ufid); 
         //$userField->toggleActive();

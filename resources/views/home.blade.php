@@ -7,25 +7,23 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
-                <div class="panel-body">
+                <div id="main-message-div" class="panel-body">
                     You are logged in!
+                    {{ 123123 }}
                 </div>
                     
                 <div class="panel-body">
-                <h3>User has fields:</h3>
                 
                 <table>
                     <thead>
                         <tr>
-                            <td>Name</td>
+                            <td>Field name</td>
                             <td>Clicked</td>
                             <td>Active</td>
                             <td>Last Updated</td>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        Kaunter: {{ count($userFields) }}
                     
                         @foreach ($userFields as $kei => $userField)
                             
