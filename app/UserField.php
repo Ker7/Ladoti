@@ -24,6 +24,14 @@ class UserField extends Model
         'clicked', 'active', 'public',
     ];
     
+    protected $user;    
+    protected $field;
+    
+    public function __construct(){
+        //$this->user = $this->getUser;
+        //$this->field = $this->getField;
+    }
+    
     /**
      * Get the Field model of this User-Field boundation
      */
