@@ -18,9 +18,9 @@ class CreateFieldsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('color');
-            $table->integer('author_user');
-            $table->boolean('clicked');     //clicked or not? For giggles... TEST VAL
             $table->boolean('verified');
+            $table->integer('author_user');
+$table->boolean('clicked');     //clicked or not? For giggles... TEST VAL
             $table->timestamps();
         });
     }

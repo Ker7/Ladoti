@@ -48,12 +48,15 @@ class UserField extends Model
     }
     
     
-    // Muuda väärtust ja uuenda!
+    // Testfunktsioon. @todo eemaldada
     public function toggleClicked() {
         $this->clicked = $this->clicked ? false : true;
         $this->save();
-    } 
-    // Muuda väärtust ja uuenda!
+    }
+    
+    /* Toggle whether this Field is shown to others or not.
+     * This is general default, which is used for Habits as well
+     */
     public function toggleActive() {
         $this->active = $this->active ? false : true;
         $this->save();
