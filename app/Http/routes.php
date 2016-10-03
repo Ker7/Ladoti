@@ -11,6 +11,8 @@
 |
 */
 
+//Route::post('/home', 'HomeController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,9 +23,12 @@ Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@
  */
 Route::patch('/home', 'HomeController@postIndex' );
 
+Route::get('logout', 'HomeController@index');
+
 Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/profile', 'ProfileController@index');
+
 
 
 

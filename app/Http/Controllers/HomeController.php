@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input as Input;
 use Illuminate\Support\Facades\Redirect;
@@ -33,9 +33,16 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
+    {
+        if(Request::ajax()){
+            return "AJax@index";//Response::json(Request::all()); 
+        }
         // Leia seotud UserFieldid, neilt saab datat Userfieldi kohta, aga Field ise ka on vaja leida!
         $linkedFields = \App\UserField::where('user_id', Auth::id())->get();
+
+        //echo "<pre>";
+        //print_r($linkedFields);
+        //echo "</pre>";
 
         $data = array(
             'userFields' => $linkedFields);
@@ -56,6 +63,7 @@ class HomeController extends Controller
             switch(Input::get('form_name')) {
                 case('field_clicked'): return $this->processFormFieldClicked($ufid);
                 case('field_active'): return $this->processFormFieldActive($ufid);
+                case('field_public'): return $this->processFormFieldPublic($ufid);
                 default: break;
             }
         }
@@ -73,6 +81,12 @@ class HomeController extends Controller
         
         $userField = UserField::findOrFail($ufid); 
         $userField->toggleActive();
+        return $this->index();
+    }
+    public function processFormFieldPublic($ufid){
+        
+        $userField = UserField::findOrFail($ufid); 
+        $userField->togglePublic();
         return $this->index();
     }
 

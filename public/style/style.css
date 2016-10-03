@@ -1,7 +1,14 @@
 .doti-main-circle {
+    float: left;
     width: 400px;
     border: 4px groove #420090;
 }
 
 thead tr td {font-size: 11px;}
 td {padding: 2px;padding-right: 6px}
+
+.home-fields-cont {
+    float: left;
+    display: inline-block;
+    margin-left: 20px;
+}

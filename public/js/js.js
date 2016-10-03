@@ -15,6 +15,13 @@ function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
+// Ajax tooken!
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $( "#fieldCircle" ).click(function(evt){
     var activePoints = myChart.getElementAtEvent(evt);           
     /* do something */
@@ -27,8 +34,36 @@ $( "#fieldCircle" ).click(function(evt){
         t2 = myChart.data.labels[firstPoint._index];                                    // Fieldi nimi
         t3 = myChart.data.ids[firstPoint._index];                                       // Fieldi ID
         
-alert(t1+' / '+t2+' /data:'+t3);
+//alert(t1+' / '+t2+' /data:'+t3);
+//console.log(t3);
+//console.log($("div").find("[data-row-fieldid='" + t3 + "']").css('display'))
 
-        //console.log(myChart.data.datasets[firstPoint._datasetIndex].data['labels'].toSource());
-        //alert(firstPoint._datasetIndex + "/" + firstPoint._index);
+    /* Leia Fieldi rida, mis on peidetult html'is.
+     *
+     * Kui sama field on  juba nähtaval, siis ei tee midagi...
+     */
+    if ($("div").find("[data-row-fieldid='" + t3 + "']").css('display') == "none") {
+        $(".home-field-row:visible").each(function(){
+            $(this).slideToggle();
+        });
+        $("div").find("[data-row-fieldid='" + t3 + "']").slideToggle(200);
+    }
+
+    // Teeme veidi AJAX'it kah
+    $.ajax({
+        type: "GET",
+        url: "./home",    //"./home", sama asi, ei muutnud midagi
+        //data: {selectedPhoneNumber:$('input#phoneNumber').val()},
+        //headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: {userfield_id:    t3},
+        success: function(adata) {
+            //alert("Ajax SUCCESS?"+adata);
+            console.log(adata.toString());
+        }
+    });
+    return false;  // miks seda?
+    
+    
+    //console.log(myChart.data.datasets[firstPoint._datasetIndex].data['labels'].toSource());
+    //alert(firstPoint._datasetIndex + "/" + firstPoint._index);
 });

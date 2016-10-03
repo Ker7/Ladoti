@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Carbon\Carbon;
+
 class UsersSeeder extends Seeder
 {
     /**
@@ -19,21 +21,24 @@ class UsersSeeder extends Seeder
                 'name' => 'JohSenna',
                 'email' => 'js@mail.com',
                 'password' => Hash::make('asd'),
-                'privilege' => 1
+                'privilege' => 1,
+                'created_at' => Carbon::now()
                 ),
             array(
                 'id' => 2,
                 'name' => 'Kert',
                 'email' => 'kert@mail.com',
                 'password' => Hash::make('asd'),
-                'privilege' => 1
+                'privilege' => 1,
+                'created_at' => Carbon::now()
                 ),
             array(
                 'id' => 3,
                 'name' => 'Andrus',
                 'email' => 'andrus@mail.com',
                 'password' => Hash::make('asd'),
-                'privilege' => 1
+                'privilege' => 1,
+                'created_at' => Carbon::now()
                 )
             );
         
