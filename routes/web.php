@@ -21,6 +21,7 @@ Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@
  */
 Route::patch('/home', 'HomeController@postIndex' );
 
-Route::auth();
-Route::get('/home', 'HomeController@index');
+Auth::routes();
+
 Route::get('/profile', 'ProfileController@index');
+Route::get('/home', 'HomeController@index');
