@@ -16,11 +16,14 @@ class CreateFieldsTable extends Migration
         
         Schema::create('fields', function (Blueprint $table) {
             $table->increments('id');
+            
             $table->string('name');
             $table->string('color');
-            $table->boolean('verified');
-            $table->integer('author_user');
-$table->boolean('clicked');     //clicked or not? For giggles... TEST VAL
+            $table->boolean('verified')->default(0);    // Is it verified as a global field?
+            $table->integer('author_user');             // Who created the field?
+            
+$table->boolean('clicked');     // @todo remove clicked or not? For giggles... TEST
+
             $table->timestamps();
         });
     }

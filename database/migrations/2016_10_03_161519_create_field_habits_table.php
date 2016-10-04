@@ -17,6 +17,10 @@ class CreateFieldHabitsTable extends Migration
             $table->increments('id');
             $table->integer('userfield_id');
             $table->integer('habit_id');
+            
+                /* How is this Habit, thats bound to a Field and a User, being measured? */
+            $table->integer('unit_of_measure_id');  // @Todo Gets name & type for premade Units ~from~ another table
+            
             $table->timestamps();
         });
     }

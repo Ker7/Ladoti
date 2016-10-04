@@ -32,7 +32,7 @@
                         type="checkbox"
                         name="field"
                         onClick="this.form.submit()"
-                        {{ $userField->public?'public':'' }}
+                        {{ $userField->public?'checked':'' }}
                     />
                 {{ Form::close() }}
             </td>

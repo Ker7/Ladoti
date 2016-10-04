@@ -61,4 +61,8 @@ class UserField extends Model
         $this->active = $this->active ? false : true;
         $this->save();
     }
+    public function togglePublic() {
+        $this->public = $this->public ? false : true;
+        $this->save();
+    }
 }

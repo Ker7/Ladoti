@@ -107,5 +107,8 @@
         
     <script type="text/javascript" src="{{ URL::asset('js/js.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    
+    <pre>dlayout.blade.php - {{ print_r(Request::session()) }}</pre>
+    
 </body>
 </html>

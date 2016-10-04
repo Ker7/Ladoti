@@ -34,7 +34,7 @@ class FieldsSeeder extends Seeder
         foreach (range(1,100) as $index) {
 	        DB::table('userfield_habit')->insert([
                 'id' => $index,
-                'userfield_id' => Rand(1,8),
+                'userfield_id' => Rand(1,21),
                 'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
 	            'value' => Rand(0,100),
 	            'comment' => $faker->sentence
