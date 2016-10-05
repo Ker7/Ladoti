@@ -34,6 +34,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //$this->displayGet();
+        
         if(Request::ajax()){
             return "AJax@index";//Response::json(Request::all()); 
         }
@@ -43,9 +45,24 @@ class HomeController extends Controller
         //echo "<pre>";
         //print_r($linkedFields);
         //echo "</pre>";
-
+        
+        //Kui midagi muudeti, siis see field peaks lahti jääma
+        $openField = Input::get('field_id');
+        
+        $w = array( 'hi!',
+                    'so good you came! :)',
+                    'nice to see you!',
+                    'I\'m so happy to see you here! Though I\'m just a piece of code :\')
+                    ');
+        
+        $c = count($w) - 1;
+        
+        $sayS = $w[Rand(0,$c)];
+                
         $data = array(
-            'userFields' => $linkedFields);
+            'userFields' => $linkedFields,
+            'openField'  => $openField,
+            'specialWelcome' =>$sayS);
 
         return view('home', $data);
     }

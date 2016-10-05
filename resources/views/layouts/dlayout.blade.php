@@ -55,8 +55,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Doti
+                <a class="doti-logo" href="{{ url('/') }}">
+                    <img src="{{ URL::asset('img/logo.png') }}" alt="Start page" height="50" width="50" />
                 </a>
             </div>
 
@@ -108,7 +108,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/js.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     
-    <pre>dlayout.blade.php - {{ print_r(Request::session()) }}</pre>
+    {{-- <pre>dlayout.blade.php - {{ print_r(Request::session()) }}</pre> --}}
     
 </body>
 </html>
