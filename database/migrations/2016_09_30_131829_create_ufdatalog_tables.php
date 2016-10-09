@@ -16,8 +16,11 @@ class CreateUfdatalogTables extends Migration
         Schema::create('ufdatalog', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userfield_id');
+            $table->integer('fieldhabit_id')->nullable();
             $table->date('date');
-            $table->integer('value'); //0-100
+            $table->integer('value_int'); //0-100
+            $table->integer('value_time');
+            $table->integer('value_decimal');
             $table->text('comment');
         });
     }

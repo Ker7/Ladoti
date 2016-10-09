@@ -36,6 +36,8 @@ class UserFieldDLSeeder extends Seeder
 	        DB::table('ufdatalog')->insert([
                 'id' => $index,
                 'userfield_id' => Rand(1,8),
+                
+                'unit_id' => 1, // IF Field datalog, then unit numeric
                 'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
 	            'value' => Rand(0,100),
 	            'comment' => $faker->sentence

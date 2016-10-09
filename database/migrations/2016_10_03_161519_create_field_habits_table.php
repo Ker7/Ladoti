@@ -20,11 +20,11 @@ class CreateFieldHabitsTable extends Migration
             
                 /* How is This Habit being measured? */
                 /* @Todo Gets name & type for premade Units ~from~ another table
-                 * 1 - decimal, numeric - 1, 6314.34, 3.1415
+                 * 1 - integer - 1, 6314.34, 3.1415
                  * 2 - timespan - 17.3 sec, 4,33 mins, 2:13:23 (2h13m23s)
-                 * 3 - percentage
+                 * 3 - decimals - 1, 6314.34, 3.1415
                  */
-            $table->integer('unit_id')->default(1);
+            $table->integer('unit_id')->default(1); // IF Field datalog, then unit numeric
             
                 /* Name like "pieces", "pages", "things" we use to count
                  */

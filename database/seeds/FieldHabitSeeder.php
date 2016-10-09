@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Faker\Factory as Factory;
 
-class FieldsSeeder extends Seeder
+class FieldsHabitSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -36,7 +36,14 @@ class FieldsSeeder extends Seeder
                 'id' => $index,
                 'userfield_id' => Rand(1,21),
                 'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
+                
 	            'value' => Rand(0,100),
+                'field_id' => $index,
+                'active' => Rand(0,1),          // WWW III PPP
+                'clicked' => 1,
+                'public' => 1,
+                'created_at' => Carbon::now(),
+                
 	            'comment' => $faker->sentence
 	       ]);
         }

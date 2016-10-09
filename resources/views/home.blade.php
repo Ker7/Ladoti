@@ -20,9 +20,7 @@
                     @include('doti-field-rows')
 
                 </div>
-                
-<iframe src="https://www.facebook.com/plugins/comment_embed.php?href=https%3A%2F%2Fwww.facebook.com%2Fdaniel.b.laing%2Fposts%2F10204774849290384%3Fcomment_id%3D1121428221275788&include_parent=false" width="560" height="121" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                        
+                                       
             </div>
         </div>
     </div>
