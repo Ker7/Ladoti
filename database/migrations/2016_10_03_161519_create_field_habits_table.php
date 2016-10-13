@@ -17,6 +17,7 @@ class CreateFieldHabitsTable extends Migration
             $table->increments('id');
             $table->integer('userfield_id');
             $table->integer('habit_id')->nullable();    // IF no habit then it's a Field datalog, the Habit is just tracking that
+            $table->boolean('internal')->default(false);// If internal,  then means mabye plugged-in or somthing in-sys., like Field Datalog
             
                 /* How is This Habit being measured? */
                 /* @Todo Gets name & type for premade Units ~from~ another table
@@ -28,9 +29,13 @@ class CreateFieldHabitsTable extends Migration
             
                 /* Name like "pieces", "pages", "things" we use to count
                  */
-            $table->string('unit_name');
-                
+            $table->string('unit_name')->nullable()->default(NULL);
+            
+            $table->boolean('active')->default(true);
+            $table->boolean('public')->default(false);
+            
             // $table->string('habittag_id'); For ManyToMany we don't need a key here
+            $table->text('comment');
             
             $table->timestamps();
         });

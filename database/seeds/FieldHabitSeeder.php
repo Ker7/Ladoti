@@ -16,36 +16,62 @@ class FieldsHabitSeeder extends Seeder
     {
         DB::table('userfield_habit')->delete();
         
-        //$fields = array(
-        //    array('id' => 1,'name' => 'Tervis',             'color' => '#FF6384','author_user' => 1,'clicked' => 0, 'verified' => 0, 'created_at' => Carbon::now()),
-        //    array('id' => 2,'name' => 'Vaimsus',            'color' => '#4BC0C0','author_user' => 2,'clicked' => 0, 'verified' => 0, 'created_at' => Carbon::now()),
-        //    array('id' => 3,'name' => 'Finants',            'color' => '#9476AB','author_user' => 2,'clicked' => 1, 'verified' => 0, 'created_at' => Carbon::now()),
-        //    array('id' => 4,'name' => 'Sotsialiseerumine',  'color' => '#E7E9ED','author_user' => 2,'clicked' => 1, 'verified' => 0, 'created_at' => Carbon::now()),
-        //    array('id' => 5,'name' => 'Muusika',            'color' => '#36A2EB','author_user' => 2,'clicked' => 1, 'verified' => 0, 'created_at' => Carbon::now()),
-        //    array('id' => 6,'name' => 'Programmeerimine',   'color' => '#D4BA6A','author_user' => 2,'clicked' => 1, 'verified' => 0, 'created_at' => Carbon::now()),
-        //    array('id' => 7,'name' => 'Töö',                'color' => '#420029','author_user' => 2,'clicked' => 1, 'verified' => 0, 'created_at' => Carbon::now())
-        //    );
-        //
-        ////"#FF6384","#4BC0C0","#9476AB","#E7E9ED","#36A2EB","#D4BA6A","#420029","#E7E9ED"
-        //
-        //DB::table('userfield_habit')->insert($fields);
-        
         $faker = Factory::create();
-        foreach (range(1,100) as $index) {
-	        DB::table('userfield_habit')->insert([
-                'id' => $index,
-                'userfield_id' => Rand(1,21),
-                'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
+        
+        /* Kõigepealt teeme iga fieldi trackimiseks special Habiti, mida ei kuvata välja ega midagi
+         */
+        
+        $i = 1;  // index for table id column
+        
+        foreach (range(1,21) as $userfield_id){
+            DB::table('userfield_habit')->insert([
+                'id' => $i,
                 
-	            'value' => Rand(0,100),
-                'field_id' => $index,
-                'active' => Rand(0,1),          // WWW III PPP
-                'clicked' => 1,
-                'public' => 1,
+                'internal' => true, //
+                'userfield_id' => $userfield_id,
+                //'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
+                
+                'unit_id' => 1,         // IF Field datalog, then unit is piece
+                'unit_name' => "%",     
+                
+                //'value' => Rand(0,100),
+                //'field_id' => $index,
+                'active' => 1,          // WWW III PPP
+                'public' => 0,
                 'created_at' => Carbon::now(),
                 
-	            'comment' => $faker->sentence
-	       ]);
+                'comment' => 'For tracking the Field.'
+                //'comment' => $faker->sentence
+            ]);
+            $i++;
+        }
+        
+        /* Enda kontole hakkan lisama test habiteid */
+        $array_data = array();
+        $array_data[8] = ['unit_id' => 1,   'unit_name' => ''];
+        
+        /* Enda kontole hakkan lisama test habiteid */
+        foreach (range(8,14) as $userfield_id){
+            DB::table('userfield_habit')->insert([
+                'id' => $i,
+                
+                'internal' => false, //
+                'userfield_id' => $userfield_id,
+                //'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
+                
+                'unit_id' => 1,         // IF Field datalog, then unit is piece
+                'unit_name' => "%",     
+                
+                //'value' => Rand(0,100),
+                //'field_id' => $index,
+                'active' => 1,          // WWW III PPP
+                'public' => 0,
+                'created_at' => Carbon::now(),
+                
+                'comment' => 'For tracking the Field.'
+                //'comment' => $faker->sentence
+            ]);
+            $i++;
         }
     }
 }

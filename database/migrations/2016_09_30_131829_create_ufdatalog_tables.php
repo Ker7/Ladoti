@@ -13,15 +13,20 @@ class CreateUfdatalogTables extends Migration
      */
     public function up()
     {
-        Schema::create('ufdatalog', function (Blueprint $table) {
+        Schema::create('dotilog', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userfield_id');
-            $table->integer('fieldhabit_id')->nullable();
-            $table->date('date');
-            $table->integer('value_int'); //0-100
-            $table->integer('value_time');
-            $table->integer('value_decimal');
+            $table->integer('fieldhabit_id');
+            $table->date('date_log');
+            $table->date('time_log')->nullable();
+            
+              /* Idee on kõikide andmete salvestamiseks kasutada decimali DB's */
+            $table->decimal('value_decimal', 12, 2);
+            //$table->integer('value_int');
+            //$table->integer('value_time');
+            
             $table->text('comment');
+            
+            /* @todo Custom attachments (-> Images, files w/e */
         });
     }
 
@@ -32,6 +37,6 @@ class CreateUfdatalogTables extends Migration
      */
     public function down()
     {
-        Schema::drop('ufdatalog');
+        Schema::drop('dotilog');
     }
 }
