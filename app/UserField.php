@@ -47,6 +47,10 @@ class UserField extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
     
+    public function getHabits()
+    {
+        return $this->hasMany('App\FHabits', 'userfield_id', 'id');
+    }
     
     // Testfunktsioon. @todo eemaldada
     public function toggleClicked() {

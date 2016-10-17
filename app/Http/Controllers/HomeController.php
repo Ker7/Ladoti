@@ -12,6 +12,8 @@ use App\User as User;
 use App\Field as Field;
 use App\UserField as UserField;
 
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Route as Route;
 
 class HomeController extends Controller
@@ -42,8 +44,21 @@ class HomeController extends Controller
         // Leia seotud UserFieldid, neilt saab datat Userfieldi kohta, aga Field ise ka on vaja leida!
         $linkedFields = \App\UserField::where('user_id', Auth::id())->get();
 
-        //echo "<pre>";
         //print_r($linkedFields);
+        
+        foreach ($linkedFields as $key => $lf){
+            print_r($lf->getHabits()->where('internal', 1)->first()->getLogs);
+            //$linkedFields[$key]['logs'] = $lf->getHabits()->where('internal', 1)->first()->getLogs;
+            //$a = $lf->getHabits()->where('internal', 1)->first()->getLogs;
+        }
+        //$dlhabit = \App\UserField::find(8)->getHabits()->where('internal', 1)->first();
+        //$dlogs = $dlhabit->getLogs;
+        
+        //echo "<pre>";
+        //print_r($dlhabit);
+        //foreach($dlogs as $log){
+        //    echo '#' . $log->date_log . ' - ' . $log->value_decimal . '.<br />';
+        //}
         //echo "</pre>";
         
         //Kui midagi muudeti, siis see field peaks lahti j‰‰ma

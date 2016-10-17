@@ -46,6 +46,10 @@
         </tr>
         </tbody>
         </table>
+            {{ print_r($userField) }}
+            {{-- $logs = $userField->getHabits()->where('internal', 1)->first()->getLogs; --}}
+        <pre></pre>
+            
     </div>
     @endforeach
 </div>

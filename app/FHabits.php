@@ -13,17 +13,25 @@ class FHabits extends Model
     //}
     
     /**
-     * Get the Field model of this User-Field boundation
+     * 
      */
     public function getUserField()
     {
         return $this->hasOne('App\UserField', 'id', 'userfield_id');
     }
     /**
-     * Get the Field model of this User-Field boundation
+     * 
      */
     public function getHabit()
     {
         return $this->hasOne('App\Habit', 'id', 'habit_id');
+    }
+    
+    /**
+     * Get the Dotilog model of this Habit
+     */
+    public function getLogs()
+    {
+        return $this->hasMany('App\Dotilog', 'fieldhabit_id', 'id');
     }
 }
