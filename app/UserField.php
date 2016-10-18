@@ -52,6 +52,11 @@ class UserField extends Model
         return $this->hasMany('App\FHabits', 'userfield_id', 'id');
     }
     
+    public function getFieldTrackerHabit()
+    {
+        return $this->getHabits()->where('internal', 1)->first();
+    }
+    
     // Testfunktsioon. @todo eemaldada
     public function toggleClicked() {
         $this->clicked = $this->clicked ? false : true;

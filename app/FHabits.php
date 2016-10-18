@@ -34,4 +34,9 @@ class FHabits extends Model
     {
         return $this->hasMany('App\Dotilog', 'fieldhabit_id', 'id');
     }
+    
+    public function getUnit()
+    {
+        return $this->hasOne('App\Unit', 'id', 'unit_id');
+    }
 }

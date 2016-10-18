@@ -15,7 +15,7 @@
             <td>Changed</td>
         </tr>
         <tr>
-            <td>{{ $userField->getField->name }}</td>
+            <td>{{ $userField->getField->name }} </td>
             <td>
                 {{ Form::open() }}
                 {{ Form::hidden('form_name', 'field_active') }}
@@ -42,14 +42,22 @@
                 {{ Form::close() }}
             </td>
             <td>{{ Carbon\Carbon::parse($userField->created_at)->format('jS F, Y') }}</td>
-            <td>{{ Carbon\Carbon::parse($userField->updated_at)->format('jS F, Y') }}</td>
+            <td>{{ Carbon\Carbon::parse($userField->updated_at)->format('jS F, Y') }} :: </td>
         </tr>
         </tbody>
         </table>
-            {{ print_r($userField) }}
-            {{-- $logs = $userField->getHabits()->where('internal', 1)->first()->getLogs; --}}
-        <pre></pre>
             
+            {{-- $logs = $userField->getHabits()->where('internal', 1)->first()->getLogs; --}}
+        <pre>{{-- print_r($userField) --}}</pre>
+            
+        <!-- Lastmonth display! -->
+        @foreach ($userField->getHabits as $hab)
+            <!--pre>{{ print_r($hab->getLogs) }}</pre-->
+            @foreach($hab->getLogs as $log)
+                {{ $log->date_log }} :: {{ $log->value_decimal }} <br /> <!-- Õpi itereerima!! -->
+            @endforeach
+        @endforeach
     </div>
     @endforeach
+
 </div>

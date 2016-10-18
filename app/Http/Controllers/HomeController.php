@@ -46,11 +46,36 @@ class HomeController extends Controller
 
         //print_r($linkedFields);
         
-        foreach ($linkedFields as $key => $lf){
-            print_r($lf->getHabits()->where('internal', 1)->first()->getLogs);
-            //$linkedFields[$key]['logs'] = $lf->getHabits()->where('internal', 1)->first()->getLogs;
-            //$a = $lf->getHabits()->where('internal', 1)->first()->getLogs;
-        }
+        $habitTracker = array();
+        
+        // Tee midagi selle stackiga! Et pärast See Objekt mis View'sse läheb, omaks [relations] väärtuses ka neid objekte!
+        $linkedFields->each(function ($item) {
+            $thisField = $item->getField;
+            $thisHabits = $item->getHabits;
+            $thisHabits->each(function ($habit) use ($item) {
+                $habit->getUnit;
+                
+                $habitDataLogs = $habit->getLogs()
+                                        ->whereDate('date_log', '>', new Carbon('last month'))
+                                        ->get();
+                
+                echo "Field: ".$item->getField->name.", log count: ".count($habitDataLogs)."<br />";
+            });
+            //////////print_r($item);
+            //////////$habitTracker[] = $item->getHabits()->where('internal', 1)->first();
+        });
+        
+        //echo new Carbon('now');
+        //echo new Carbon('last month');
+        
+        //print_r($habitTracker);
+        //echo $habitTracker->comment . '; ';
+        
+        //foreach ($linkedFields as $key => $lf){
+        //    print_r($lf->getHabits()->where('internal', 1)->first()->getLogs);
+        //    //$linkedFields[$key]['logs'] = $lf->getHabits()->where('internal', 1)->first()->getLogs;
+        //    //$a = $lf->getHabits()->where('internal', 1)->first()->getLogs;
+        //}
         //$dlhabit = \App\UserField::find(8)->getHabits()->where('internal', 1)->first();
         //$dlogs = $dlhabit->getLogs;
         
