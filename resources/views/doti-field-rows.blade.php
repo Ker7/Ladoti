@@ -50,13 +50,9 @@
             {{-- $logs = $userField->getHabits()->where('internal', 1)->first()->getLogs; --}}
         <pre>{{-- print_r($userField) --}}</pre>
             
-        <!-- Lastmonth display! -->
-        @foreach ($userField->getHabits as $hab)
-            <!--pre>{{ print_r($hab->getLogs) }}</pre-->
-            @foreach($hab->getLogs as $log)
-                {{ $log->date_log }} :: {{ $log->value_decimal }} <br /> <!-- Õpi itereerima!! -->
-            @endforeach
-        @endforeach
+        {{-- With $userFields var from HomeController@index --}}
+        @include('doti-field-month')
+
     </div>
     @endforeach
 

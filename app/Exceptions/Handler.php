@@ -45,12 +45,12 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // TokenMismatch FIX start //
-        //if ($e instanceof \Illuminate\Session\TokenMismatchException) {
-        //    echo "###############################################
-        //          ## Handler.php this is TokenMismatchException##
-        //          ###############################################";
-        //    return redirect()->back()->withInput()->with('token', csrf_token());    // Don't know if this wannabe fix even works...
-        //}
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+            echo "###############################################
+                  ## Handler.php this is TokenMismatchException##
+                  ###############################################";
+            return redirect()->back()->withInput()->with('token', csrf_token());    // Don't know if this wannabe fix even works...
+        }
         // TokenMismatch FIX end //
         return parent::render($request, $exception);
     }

@@ -41,29 +41,27 @@ class HomeController extends Controller
         if(Request::ajax()){
             return "AJax@index";//Response::json(Request::all()); 
         }
+        
         // Leia seotud UserFieldid, neilt saab datat Userfieldi kohta, aga Field ise ka on vaja leida!
         $linkedFields = \App\UserField::where('user_id', Auth::id())->get();
-
-        //print_r($linkedFields);
-        
-        $habitTracker = array();
         
         // Tee midagi selle stackiga! Et pärast See Objekt mis View'sse läheb, omaks [relations] väärtuses ka neid objekte!
-        $linkedFields->each(function ($item) {
-            $thisField = $item->getField;
-            $thisHabits = $item->getHabits;
-            $thisHabits->each(function ($habit) use ($item) {
-                $habit->getUnit;
-                
-                $habitDataLogs = $habit->getLogs()
-                                        ->whereDate('date_log', '>', new Carbon('last month'))
-                                        ->get();
-                
-                echo "Field: ".$item->getField->name.", log count: ".count($habitDataLogs)."<br />";
-            });
-            //////////print_r($item);
-            //////////$habitTracker[] = $item->getHabits()->where('internal', 1)->first();
-        });
+        //$linkedFields->each(function ($item) {
+        //    $thisField = $item->getField;
+        //    $thisHabits = $item->getHabits;
+        //    $thisHabits->each(function ($habit) use ($item) {
+        //        $habit->getUnit;
+        //        
+        //        $habitDataLogs = $habit->getLogs()
+        //                                ->whereDate('date_log', '>', new Carbon('last month'))
+        //                                ->orderBy('date_log', 'asc')
+        //                                ->get();
+        //        
+        //        //echo "Field: ".$item->getField->name.", log count: ".count($habitDataLogs)."<br />";
+        //    });
+        //    //////////print_r($item);
+        //    //////////$habitTracker[] = $item->getHabits()->where('internal', 1)->first();
+        //});
         
         //echo new Carbon('now');
         //echo new Carbon('last month');
@@ -89,15 +87,17 @@ class HomeController extends Controller
         //Kui midagi muudeti, siis see field peaks lahti jääma
         $openField = Input::get('field_id');
         
-        $w = array( 'hi!',
-                    'so good you came! :)',
-                    'nice to see you!',
-                    'I\'m so happy to see you here! Though I\'m just a piece of code :\')
-                    ');
+        $w = array(
+            'hi!',
+            'hello there!',
+            'glad you came',
+            'glad you made it',
+            'so good you came! :)',
+            'nice to see you!',
+            'I\'m so happy to see you here! Though I\'m just a piece of code :\')
+            ');
         
-        $c = count($w) - 1;
-        
-        $sayS = $w[Rand(0,$c)];
+        $sayS = $w[Rand(0,count($w) - 1)];
                 
         $data = array(
             'userFields' => $linkedFields,

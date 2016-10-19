@@ -22,7 +22,7 @@
     //console.log(atv);
     
     //var idForField = [1, 2, 3, 4, 5, 6, 7, 8];
-    //var nameForField = ["Sotsialiseeriumine", "Finants", "Muusika", "Programmeerimine", "Tervis", "Töö", "Vaimsus", "Tühjus"];
+    //var nameForField = ["Sotsialiseeriumine", "Finants", "Muusika", "Programmeerimine", "Tervis", "TÃ¶Ã¶", "Vaimsus", "TÃ¼hjus"];
     //var dataForField = [100,26,100,30,100,49,100,50];
     //var colorArray = ["#FF6384","#4BC0C0","#9476AB","#E7E9ED","#36A2EB","#D4BA6A","#420029","#E7E9ED"];
     
