@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+//use Illuminate\Http\Request;
 use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input as Input;
@@ -43,7 +44,7 @@ class HomeController extends Controller
         }
         
         // Leia seotud UserFieldid, neilt saab datat Userfieldi kohta, aga Field ise ka on vaja leida!
-        $linkedFields = \App\UserField::where('user_id', Auth::id())->get();
+        $linkedFields = UserField::where('user_id', Auth::id())->get();
         
         // Tee midagi selle stackiga! Et pärast See Objekt mis View'sse läheb, omaks [relations] väärtuses ka neid objekte!
         //$linkedFields->each(function ($item) {
@@ -124,6 +125,8 @@ class HomeController extends Controller
                 default: break;
             }
         }
+        //print_r($request);
+        
         return $this->index();
 
     }

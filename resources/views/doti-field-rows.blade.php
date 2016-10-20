@@ -2,6 +2,7 @@
     
     @foreach ($userFields as $kei => $userField)
     <div
+        id="home-field-row-{{ $userField->id }}"
         class="home-field-row"
         data-row-fieldid="{{ $userField->id }}"
         style="display:{{ ($userField->id == $openField?'block':'none') }};">

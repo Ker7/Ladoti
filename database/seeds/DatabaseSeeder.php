@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call('UsersSeeder');
         $this->call('UserFieldSeeder');
         $this->call('UserFieldHabitDLSeeder');
-        $this->call('HabitsSeeder');
         $this->call('FieldsHabitSeeder');
+        $this->call('HabitsSeeder');
     }
 }

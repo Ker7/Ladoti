@@ -47,15 +47,36 @@ class UserField extends Model
         return $this->hasOne('App\User', 'id', 'user_id');
     }
     
+    /* All habits linked to this User Field */
     public function getHabits()
     {
         return $this->hasMany('App\FHabits', 'userfield_id', 'id');
     }
     
-    public function getFieldTrackerHabit()
-    {
-        return $this->getHabits()->where('internal', 1)->first();
+    /* Get habits linked to this user with internal value */
+    public function getInternalHabits()
+    {                                       // tegelt peaks olema siin mille habit on "_log"
+        //return $this->hasMany('App\FHabits', 'userfield_id', 'id')->where('internal', '=', 1);
+        //return $this->hasMany('App\FHabits', 'userfield_id', 'id');//->where('internal', '=', 1);
+        return $this->getHabits()->where('internal', true);
     }
+    
+    // Ei oska niimoodi piirata päringut siinsama, peab vist kontrolleris
+    //
+    //public function getFieldLogHabit()
+    //{
+    //    //return $this->getHabits()->where('internal', 0)->whereHas('Profile', function($q){
+    //    //    $q->where('gender', 'Male');
+    //    //});
+    //    //return $this->getHabits()->whereHas('Habit', function($q){
+    //    //    $q->where('name', '_log');
+    //    //})->get();
+    //
+    //    //return UserField::with('Habit')->where('internal', 1)->whereHas('Habit', function($q){
+    //    //        $q->where('name', '_log');
+    //    //    })->get();
+    //    //return $this->getHabits()->where('habits.name', '=', 'Tarbi');
+    //}
     
     // Testfunktsioon. @todo eemaldada
     public function toggleClicked() {

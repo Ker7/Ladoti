@@ -16,6 +16,7 @@ class CreateHabitsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('author_user');
+            $table->boolean('internal')->default(false);
             $table->boolean('public');
             $table->timestamps();
         });

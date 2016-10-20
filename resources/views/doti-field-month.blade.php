@@ -1,7 +1,10 @@
 <!-- Lastmonth display! -->
-@foreach ($userField->getHabits as $hab)
+@foreach ($userField->getInternalHabits as $hab)
     
-    
+    Habit ID: {{ $hab->id }}<br/>
+    Habit name: "{{ $hab->getHabit->name }}"<br/>
+    Habit internal: {{ $hab->internal }}<br/>
+    Logisid: {{ count($hab->getLogs) }}<br/>
     
     <div class="doti-field-month">
         <canvas id="fieldCircle{{ $hab->id }}" width="400" height="400" ></canvas>
@@ -67,7 +70,9 @@
     });
     </script>
         
-    {{ "Logisid: ".count($hab->getLogs) }}
+    <br />
+    ---
+    <br />
 @endforeach
 
     

@@ -16,7 +16,9 @@ class CreateFieldHabitsTable extends Migration
         Schema::create('userfield_habit', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userfield_id');
-            $table->integer('habit_id')->nullable();    // IF no habit then it's a Field datalog, the Habit is just tracking that
+            $table->integer('habit_id');    // IF no habit then it's a Field datalog, the Habit is just tracking that
+                                                        // NOT NULLABLE! Must have at least internal habits!!!
+            
             $table->boolean('internal')->default(false);// If internal,  then means mabye plugged-in or somthing in-sys., like Field Datalog
             
                 /* How is This Habit being measured? */

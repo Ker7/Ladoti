@@ -36,7 +36,7 @@ class UserFieldHabitDLSeeder extends Seeder
         
         $i = 1;
         foreach (range(1, 21) as $fieldhabit){
-            foreach (range(1,24) as $index) {
+            foreach (range(1,96) as $index) {
                 DB::table('dotilog')->insert([
                     'id' => $i,
                     'fieldhabit_id' => $fieldhabit,

@@ -30,6 +30,7 @@ class FieldsHabitSeeder extends Seeder
                 'internal' => true, //
                 'userfield_id' => $userfield_id,
                 //'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
+                'habit_id' => 14,       //Hardcoded "_log" named habit
                 
                 'unit_id' => 1,         // IF Field datalog, then unit is piece
                 'unit_name' => "%",     
@@ -58,6 +59,7 @@ class FieldsHabitSeeder extends Seeder
                 'internal' => false, //
                 'userfield_id' => $userfield_id,
                 //'date' => $faker->dateTimeBetween('-3 month', 'now')->format('Y-m-d'),
+                'habit_id' => ($userfield_id-7),       //Hardcoded "_log" named habit
                 
                 'unit_id' => 1,         // IF Field datalog, then unit is piece
                 'unit_name' => "%",     

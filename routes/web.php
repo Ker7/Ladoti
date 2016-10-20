@@ -15,13 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+// New approach!
+Route::resource('field', 'FieldController');
+
 Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@updateProfile'] );
+Route::get('/profile', 'ProfileController@index');
 
 /*  Patch - modify values
  */
 Route::patch('/home', 'HomeController@postIndex' );
-
-Auth::routes();
-
-Route::get('/profile', 'ProfileController@index');
 Route::get('/home', 'HomeController@index');
