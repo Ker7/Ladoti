@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // TokenMismatch FIX start //
-        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
             echo "###############################################
                   ## Handler.php this is TokenMismatchException##
                   ###############################################";

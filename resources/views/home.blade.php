@@ -19,7 +19,9 @@
                     {{-- With $userFields var from HomeController@index --}}
                     @include('doti-field-rows')
                 </div>
-                                       
+                
+                <div id="ajax-box"></div>
+                
             </div>
         </div>
     </div>

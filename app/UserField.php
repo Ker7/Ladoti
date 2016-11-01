@@ -52,13 +52,26 @@ class UserField extends Model
     {
         return $this->hasMany('App\FHabits', 'userfield_id', 'id');
     }
-    
     /* Get habits linked to this user with internal value */
     public function getInternalHabits()
+    {
+        $habs = $this->hasMany('App\FHabits', 'userfield_id', 'id')->where('internal', true);
+                    //->orderBy('date_log', 'desc')
+                    //->get();
+        
+        return $habs;
+    
+        //$habitsa = $this->getHabits()->where('internal', true)->get();
+        //return $habitsa;
+    }
+    
+    /* Get habits linked to this user with internal value */
+    public function getFieldIHabits()
     {                                       // tegelt peaks olema siin mille habit on "_log"
         //return $this->hasMany('App\FHabits', 'userfield_id', 'id')->where('internal', '=', 1);
-        //return $this->hasMany('App\FHabits', 'userfield_id', 'id');//->where('internal', '=', 1);
-        return $this->getHabits()->where('internal', true);
+        $habitsb =  $this->hasMany('App\FHabits', 'userfield_id', 'id')->where('internal', '=', 1);
+        //$habitsb = $this->getHabits()->getQuery()->orderBy('date_log', 'ASC')->get();
+        return $habitsb;
     }
     
     // Ei oska niimoodi piirata päringut siinsama, peab vist kontrolleris

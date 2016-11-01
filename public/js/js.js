@@ -23,20 +23,14 @@ $.ajaxSetup({
 });
 
 $( "#fieldCircle" ).click(function(evt){
-    var activePoints = myChart.getElementAtEvent(evt);           
-    /* do something */
-    //console.log(activePoints.toSource());
-    //console.log(activePoints['_index ']);
+    var activePoints = myChart.getElementAtEvent(evt);
+    
     var firstPoint = activePoints[0];
     if (firstPoint !== undefined)
     
         t1 = myChart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];   // Field väärtus
         t2 = myChart.data.labels[firstPoint._index];                                    // Fieldi nimi
         t3 = myChart.data.ids[firstPoint._index];                                       // Fieldi ID
-        
-//alert(t1+' / '+t2+' /data:'+t3);
-//console.log(t3);
-//console.log($("div").find("[data-row-fieldid='" + t3 + "']").css('display'))
 
     /* Leia Fieldi rida, mis on peidetult html'is.
      *
@@ -59,6 +53,8 @@ $( "#fieldCircle" ).click(function(evt){
         success: function(adata) {
             //alert("Ajax SUCCESS?"+adata);
             console.log(adata.toString());
+            $('#ajax-box').html(adata);
+            
         }
     });
     return false;  // miks seda?

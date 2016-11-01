@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route as Route;
 
 class HomeController extends Controller
 {
+    
+    //protected $redirectTo = '/asd';
+    
     /**
      * Create a new controller instance.
      *
@@ -37,73 +40,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$this->displayGet();
         
         if(Request::ajax()){
-            return "AJax@index";//Response::json(Request::all()); 
+            
+            $str = "123";
+            return $str;//Response::json(Request::all()); 
         }
         
-        // Leia seotud UserFieldid, neilt saab datat Userfieldi kohta, aga Field ise ka on vaja leida!
-        $linkedFields = UserField::where('user_id', Auth::id())->get();
-        
-        // Tee midagi selle stackiga! Et pärast See Objekt mis View'sse läheb, omaks [relations] väärtuses ka neid objekte!
-        //$linkedFields->each(function ($item) {
-        //    $thisField = $item->getField;
-        //    $thisHabits = $item->getHabits;
-        //    $thisHabits->each(function ($habit) use ($item) {
-        //        $habit->getUnit;
-        //        
-        //        $habitDataLogs = $habit->getLogs()
-        //                                ->whereDate('date_log', '>', new Carbon('last month'))
-        //                                ->orderBy('date_log', 'asc')
-        //                                ->get();
-        //        
-        //        //echo "Field: ".$item->getField->name.", log count: ".count($habitDataLogs)."<br />";
-        //    });
-        //    //////////print_r($item);
-        //    //////////$habitTracker[] = $item->getHabits()->where('internal', 1)->first();
-        //});
-        
-        //echo new Carbon('now');
-        //echo new Carbon('last month');
-        
-        //print_r($habitTracker);
-        //echo $habitTracker->comment . '; ';
-        
-        //foreach ($linkedFields as $key => $lf){
-        //    print_r($lf->getHabits()->where('internal', 1)->first()->getLogs);
-        //    //$linkedFields[$key]['logs'] = $lf->getHabits()->where('internal', 1)->first()->getLogs;
-        //    //$a = $lf->getHabits()->where('internal', 1)->first()->getLogs;
-        //}
-        //$dlhabit = \App\UserField::find(8)->getHabits()->where('internal', 1)->first();
-        //$dlogs = $dlhabit->getLogs;
-        
-        //echo "<pre>";
-        //print_r($dlhabit);
-        //foreach($dlogs as $log){
-        //    echo '#' . $log->date_log . ' - ' . $log->value_decimal . '.<br />';
-        //}
-        //echo "</pre>";
-        
-        //Kui midagi muudeti, siis see field peaks lahti jääma
-        $openField = Input::get('field_id');
-        
-        $w = array(
-            'hi!',
-            'hello there!',
-            'glad you came',
-            'glad you made it',
-            'so good you came! :)',
-            'nice to see you!',
-            'I\'m so happy to see you here! Though I\'m just a piece of code :\')
-            ');
-        
-        $sayS = $w[Rand(0,count($w) - 1)];
-                
         $data = array(
-            'userFields' => $linkedFields,
-            'openField'  => $openField,
-            'specialWelcome' =>$sayS);
+            'userFields' => UserField::where('user_id', Auth::id())->get(),
+            'openField'  => Input::get('field_id'),
+            'specialWelcome' => $this->getWelcomeMessage());
 
         return view('home', $data);
     }
@@ -161,5 +108,18 @@ class HomeController extends Controller
         echo "<pre>";
         print_r (Input::get());
         echo "</pre>";
+    }
+    
+    private function getWelcomeMessage() {
+        $w = array(
+            'hi!',
+            'hello there!',
+            'glad you came',
+            'glad you made it',
+            'so good you came! :)',
+            'nice to see you!',
+            'I\'m so happy to see you here! Though I\'m just a piece of code :\')
+            ');
+        return $w[Rand(0,count($w) - 1)];
     }
 }

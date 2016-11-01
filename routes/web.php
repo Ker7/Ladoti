@@ -15,14 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-// New approach!
-Route::resource('field', 'FieldController');
+Route::get('/home', 'HomeController@index');
+
 
 Route::put('/profile', [ 'as' => 'profile.update', 'uses' => 'ProfileController@updateProfile'] );
 Route::get('/profile', 'ProfileController@index');
 
 /*  Patch - modify values
  */
+Auth::routes();
+
+// New approach!
+Route::resource('field', 'FieldController');
+Route::resource('logs', 'DotilogController');
+
 Route::patch('/home', 'HomeController@postIndex' );
 Route::get('/home', 'HomeController@index');

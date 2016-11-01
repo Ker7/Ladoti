@@ -6,71 +6,59 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Field;
-
-class FieldController extends Controller
+class DotilogsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        echo "hello@Index";
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        echo "hello@Create";
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        echo "hello@Store";
+        //
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        echo "hello@Show".$id;
-        $field = Field::find($id);
-        return view('fields.show', array('field' => $field));
+        //
     }
-
-    /* @todo If Admin!!!
-     *
-     **/
-    public function showUserFields($userID)
-    {
-        
-    }
-
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        echo "hello@Edit";
+        //
     }
 
     /**
@@ -82,17 +70,17 @@ class FieldController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "hello@U";
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        echo "hello@Destroy";
+        //
     }
 }

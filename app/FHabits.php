@@ -32,7 +32,9 @@ class FHabits extends Model
      */
     public function getLogs()
     {
-        return $this->hasMany('App\Dotilog', 'fieldhabit_id', 'id');
+        //return $this->hasMany('App\Dotilog', 'fieldhabit_id', 'id');
+        return $this->hasMany('App\Dotilog', 'fieldhabit_id', 'id')->orderBy('date_log')->limit(30);
+                    //->get();
     }
     
     public function getUnit()
