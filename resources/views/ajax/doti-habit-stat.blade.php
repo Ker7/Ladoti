@@ -23,6 +23,13 @@ var valuesForGraph = [
     @endforeach
 ];
 
+// TEST Hover asjade stiilimiseks
+var valueHover = [
+    @foreach($hab->getLogs as $kei => $log)
+        "red" {{ (($kei+1) == count($hab->getLogs) ) ? "" : "," }}
+    @endforeach
+];
+
 var data = {
     labels: labelsForGraph,
     datasets: [
@@ -41,12 +48,16 @@ var data = {
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBackgroundColor: "#7a418a",//"rgba(75,192,192,1)",
+            pointHoverBorderColor: "#c6b2cc",//"rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
             spanGaps: false,
+            
+            borderWidth: 3, //Graafiku joone paksus
+            hoverRadius: 10,
+            hoverBackgroundColor: "red",
         }
     ]
 };
@@ -58,6 +69,12 @@ var options = [
             type: 'linear',
             position: 'bottom'
         }]
+    },
+    legend: {
+        display: true,
+        labels: {
+            fontColor: 'rgb(255, 99, 132)'
+        }
     }
 }]
 
