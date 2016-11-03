@@ -49,7 +49,7 @@
         </table>
             
             {{-- $logs = $userField->getHabits()->where('internal', 1)->first()->getLogs; --}}
-        <pre>{{-- print_r($userField) --}}</pre>
+        <!--<pre>{{-- print_r($userField) --}}</pre>-->
             
         {{-- With $userFields var from HomeController@index --}}
         @include('doti-field-month')

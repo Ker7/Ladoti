@@ -17,10 +17,12 @@
                     @include('doti-circle')
                     
                     {{-- With $userFields var from HomeController@index --}}
-                    @include('doti-field-rows')
+                    {{-- @include('doti-field-rows') --}}
+                    
+                    <div id="ajax-box" style="display: inline-block;"></div>
+                    
                 </div>
                 
-                <div id="ajax-box"></div>
                 
             </div>
         </div>

@@ -40,17 +40,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data = array(
+            'userFields' => UserField::where('user_id', Auth::id())->get(),
+            'openField'  => Input::get('field_id'),
+            'specialWelcome' => $this->getWelcomeMessage());
         
+        // /home aadressile suunatud Ajax request... Siin ei tohiks teha suurt?
         if(Request::ajax()){
             
             $str = "123";
             return $str;//Response::json(Request::all()); 
         }
-        
-        $data = array(
-            'userFields' => UserField::where('user_id', Auth::id())->get(),
-            'openField'  => Input::get('field_id'),
-            'specialWelcome' => $this->getWelcomeMessage());
 
         return view('home', $data);
     }

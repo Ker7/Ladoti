@@ -1,9 +1,8 @@
 <!-- Lastmonth display! -->
 @foreach ($userField->getInternalHabits as $hab)
     
-    Habit ID: {{ $hab->id }}<br/>
-    Habit name: "{{ $hab->getHabit->name }}"<br/>
-    Habit internal: {{ $hab->internal }}<br/>
+    {{-- Habit ID: {{ $hab->id }}        Habit internal: {{ $hab->internal }} --}}
+    Habit name: "{{ $hab->getHabit->name }}"
     Logisid: {{ count($hab->getLogs) }}<br/>
     
     <div class="doti-field-month">
@@ -70,8 +69,6 @@
     });
     </script>
         
-    <br />
-    ---
     <br />
 @endforeach
 

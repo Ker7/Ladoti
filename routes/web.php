@@ -27,6 +27,7 @@ Auth::routes();
 
 // New approach!
 Route::resource('field', 'FieldController');
+Route::resource('userfield', 'UserFieldsController');
 Route::resource('logs', 'DotilogController');
 
 Route::patch('/home', 'HomeController@postIndex' );

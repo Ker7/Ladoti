@@ -15,12 +15,7 @@ function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
-// Ajax tooken!
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+
 
 $( "#fieldCircle" ).click(function(evt){
     var activePoints = myChart.getElementAtEvent(evt);
@@ -44,17 +39,27 @@ $( "#fieldCircle" ).click(function(evt){
     }
 
     // Teeme veidi AJAX'it kah
+    // Ajax tooken! Seda mingi hetk polnud vaja..? Error 500 korral pidi aitama.
+    //$.ajaxSetup({
+    //    headers: {
+    //        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //    }
+    //});
     $.ajax({
         type: "GET",
-        url: "./home",    //"./home", sama asi, ei muutnud midagi
+        url: "userfield",    //"./home", sama asi, ei muutnud midagi
         //data: {selectedPhoneNumber:$('input#phoneNumber').val()},
         //headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         data: {userfield_id:    t3},
         success: function(adata) {
             //alert("Ajax SUCCESS?"+adata);
-            console.log(adata.toString());
+            //console.log(adata.toString());
+            console.log('ajax-userfield-success');
             $('#ajax-box').html(adata);
-            
+        },
+        error: function() {
+            console.log('ajax-userfield-error');
+            alert("No habits found! :(");
         }
     });
     return false;  // miks seda?
