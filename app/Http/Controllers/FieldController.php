@@ -49,8 +49,16 @@ class FieldController extends Controller
     public function show($id)
     {
         echo "hello@Show".$id;
+        
         $field = Field::find($id);
-        return view('fields.show', array('field' => $field));
+        
+        if($field) {
+            return view('fields.show', array('field' => $field));
+        } else {
+            
+        }
+        
+        
     }
 
     /* @todo If Admin!!!
